@@ -1,8 +1,5 @@
 import sys,json,socket,time
 
-class Message:
-	def __init__(self,topic,message):
-		self.topic,self.message = topic,message
 
 class Producer:
 	def __init__(self,topic,server_address):
@@ -16,7 +13,8 @@ class Producer:
 
 	def start(self):
 		while True:
-			self.sock.sendto(json.dumps(Message(self.topic,"hello people").__dict__),self.server_address)
+			self.sock.sendto(json.dumps({'topic':"hello",'message':"Ramailo Jind.."}),self.server_address)
+			#self.sock.sendto("Hello")
 			print "sent to server...."
 			time.sleep(5)
 
